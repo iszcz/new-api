@@ -8,6 +8,7 @@ import (
 	"one-api/model"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -175,6 +176,7 @@ func Register(c *gin.Context) {
 		Password:    user.Password,
 		DisplayName: user.Username,
 		InviterId:   inviterId,
+		CreatedAt:   time.Now().Unix(),
 	}
 	if common.EmailVerificationEnabled {
 		cleanUser.Email = user.Email

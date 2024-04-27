@@ -139,6 +139,15 @@ const UsersTable = () => {
       },
     },
     {
+      title: '注册时间', dataIndex: 'created_at', render: (text, record, index) => {
+          if (!record.created_at) {
+              return <Tag color='grey'>无</Tag>;
+          }
+          const date = new Date(record.created_at * 1000);
+          return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)} ${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}`;
+      },
+    },
+    {
       title: '',
       dataIndex: 'operate',
       render: (text, record, index) => (
